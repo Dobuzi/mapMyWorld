@@ -10,7 +10,7 @@
 
   <include file='$(find my_robot)/launch/robot_description.launch' />
 
-  <arg name="world_file" default="$(find my_robot)/worlds/empty.world" />
+  <arg name="world_file" default="$(find my_robot)/worlds/MyApartment.world" />
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="use_sim_time" value="true" />
     <arg name="debug" value="false" />
@@ -24,5 +24,5 @@
         args='-urdf -param robot_description -model my_robot
               -x $(arg x) -y $(arg y) -z $(arg z)
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)'/>  
-
+  <node name='rviz' pkg='rviz' type='rviz' respawn='false' />
 </launch>
