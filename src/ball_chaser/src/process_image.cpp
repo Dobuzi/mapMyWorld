@@ -16,6 +16,16 @@ void drive_robot(float lin_x, float ang_z) {
   }
 }
 
+bool isWhite(const sensor_msgs::Image img, int i) {
+  int R = img.data[i];
+  int G = img.data[i+1];
+  int B = img.data[i+2];
+  if ((R == 255) && (G == 255) && (B == 255)) {
+    return true;
+  }
+  return false;
+}
+
 void process_image_callback(const sensor_msgs::Image img) {
   int white_pixel = 255;
   int left = 0;
@@ -24,18 +34,18 @@ void process_image_callback(const sensor_msgs::Image img) {
   float lin_x = 0.0;
   float ang_z = 0.0;
   int max_zone = 0;
-  int max_threshold = 100000;
-  int min_threshold = 100;
+  int max_threshold = 10000;
+  int min_threshold = 5;
   float turn_left = -0.3;
   float turn_right = 0.3;
   float run_forward = 0.3;
 
   for (int i = 0; i < img.height * img.step; i++) {
-    if (img.data[i] == white_pixel) {
+    if ((i%3 == 0) and isWhite(img, i)) {
       int position = i % img.step;
-      if (position < (img.step / 3)) {
+      if (position < (img.step / 4)) {
         left++;
-      } else if (position < (img.step * 2 / 3)) {
+      } else if (position < (img.step * 2 / 4)) {
         forward++;
       } else {
         right++;
@@ -43,22 +53,15 @@ void process_image_callback(const sensor_msgs::Image img) {
     }
   }
 
-  if (left > forward) {
-    if (left >  right) {
-      max_zone = left;
-      ang_z = turn_left;
-    } else {
-      max_zone = right;
-      ang_z = turn_right;
-    }
+  if ((left > forward) && (left > right)) {
+    max_zone = left;
+    ang_z = turn_left;
+  } else if ((forward > left) && (forward > right)) {
+    max_zone = forward;
+    lin_x = run_forward;
   } else {
-    if (forward > right) {
-      max_zone = forward;
-      lin_x = run_forward;
-    } else {
-      max_zone = right;
-      ang_z = turn_right;
-    }
+    max_zone = right;
+    ang_z = turn_right;
   }
 
   ROS_INFO_STREAM("left: " + std::to_string(left) + ", forward:" + std::to_string(forward) + ", right: " + std::to_string(right));

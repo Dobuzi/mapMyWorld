@@ -10,7 +10,7 @@
 
   <include file='$(find my_robot)/launch/robot_description.launch' />
 
-  <arg name="world_file" default="$(find my_robot)/worlds/MyApartment.world" />
+  <arg name="world_file" default="$(find my_robot)/worlds/JongWonKim.world" />
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="use_sim_time" value="true" />
     <arg name="debug" value="false" />
