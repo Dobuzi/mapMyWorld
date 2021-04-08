@@ -114,7 +114,7 @@
         <cylinder radius='.1' length='.05' />
       </geometry>
     </collision>
-    <visual name='visual'>
+    <visual>
       <origin xyz='0 0 0' rpy='0 1.5707 1.5707' />
       <geometry>
         <cylinder radius='.1' length='.05' />
@@ -139,7 +139,7 @@
         <cylinder radius='.1' length='.05' />
       </geometry>
     </collision>
-    <visual name='visual'>
+    <visual>
       <origin xyz='0 0 0' rpy='0 1.5707 1.5707' />
       <geometry>
         <cylinder radius='.1' length='.05' />
@@ -164,7 +164,7 @@
         <box size='.05 .05 .05' />
       </geometry>
     </collision>
-    <visual name='visual'>
+    <visual>
       <origin xyz='0 0 0' rpy='0 0 0' />
       <geometry>
         <box size='.05 .05 .05' />
@@ -195,10 +195,24 @@
         <mesh filename="package://my_robot/meshes/hokuyo.dae" />
       </geometry>
     </visual>
-  </link> 
+  </link>
 
-  <gazebo reference='left_wheel'>
+  <gazebo reference="left_wheel">
     <material>Gazebo/Green</material>
   </gazebo>
-
+  <gazebo reference="right_wheel">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <gazebo reference="chassis">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="chassis_back_caster_visual">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="chassis_front_caster_visual">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="camera">
+    <material>Gazebo/Red</material>
+  </gazebo>
 </robot>
