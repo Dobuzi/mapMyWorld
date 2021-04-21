@@ -12,7 +12,7 @@
 ![Camera and Lidar Sensing while turning around](ballChaser.gif)
 
 ### Localization
-![Camera and Lidar Sensing And Localization with AMCL](whereAmI.git)
+![Camera and Lidar Sensing And Localization with AMCL](whereAmI.gif)
 
 ## How to use
 
