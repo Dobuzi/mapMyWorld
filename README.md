@@ -1,4 +1,4 @@
-# Ball Chaser Robot with Gazebo and ROS
+# Graph SLAM with RTAB Mapping on ROS
 
 ## Robot Components
 
@@ -14,6 +14,9 @@
 ### Localization
 ![Camera and Lidar Sensing And Localization with AMCL](whereAmI.gif)
 
+### SLAM
+![RGBD Camera with RTAB ROS](mapMyWorld.gif)
+
 ## How to use
 
 1. Run 1st terminal
@@ -28,7 +31,7 @@ roslaunch my_robot world.launch
 2. Run 2nd terminal
 ```
 source devel/setup.bash
-roslaunch my_robot amcl.launch
+roslaunch my_robot mapping.launch # or localization.launch
 ```
 
 3. Run 3rd terminal
