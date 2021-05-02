@@ -21,8 +21,8 @@
 
 1. Run 1st terminal
 ```
-git clone https://github.com/Dobuzi/whereAmI.git
-cd whereAmI
+git clone https://github.com/Dobuzi/mapMyWorld.git
+cd mapMyWorld
 source devel/setup.bash
 catkin_make
 source devel/setup.bash
@@ -37,5 +37,5 @@ roslaunch my_robot mapping.launch # or localization.launch
 3. Run 3rd terminal
 ```
 source devel/setup.bash
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+roslaunch my_robot teleop.launch
 ```
